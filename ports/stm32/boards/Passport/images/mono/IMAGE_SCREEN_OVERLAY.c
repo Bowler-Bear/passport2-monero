@@ -2,6 +2,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //
 
+// SPDX-FileCopyrightText: © 2022 Foundation Devices, Inc. <hello@foundationdevices.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+//
+
 #if defined(LV_LVGL_H_INCLUDE_SIMPLE)
 #include "lvgl.h"
 #else

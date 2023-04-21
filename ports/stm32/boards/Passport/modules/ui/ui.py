@@ -244,7 +244,7 @@ class UI():
                 # print('account[{}]={}'.format(account, i))
 
                 account_card = {
-                    'right_icon': lv.ICON_BITCOIN,
+                    'right_icon': lv.ICON_MONERO,
                     'header_color': LIGHT_GREY,
                     'header_fg_color': LIGHT_TEXT,
                     'statusbar': {'title': 'ACCOUNT', 'icon': lv.ICON_FOLDER, 'fg_color': get_account_fg(account)},

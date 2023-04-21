@@ -121,7 +121,7 @@ def bitcoin_menu():
     from utils import is_logged_in
 
     return [
-        {'icon': lv.ICON_BITCOIN, 'label': 'Units', 'page': UnitsSettingPage, 'is_visible': is_logged_in},
+        {'icon': lv.ICON_MONERO, 'label': 'Units', 'page': UnitsSettingPage, 'is_visible': is_logged_in},
         {'icon': lv.ICON_TWO_KEYS, 'label': 'Multisig', 'submenu': multisig_menu, 'is_visible': has_seed},
         {'icon': lv.ICON_NETWORK, 'label': 'Network', 'flow': SetChainFlow, 'statusbar': {},
          'is_visible': is_logged_in},
@@ -291,7 +291,7 @@ def settings_menu():
         {'icon': lv.ICON_DEVICE, 'label': 'Device', 'submenu': device_menu},
         {'icon': lv.ICON_BACKUP, 'label': 'Backup', 'submenu': backup_menu, 'is_visible': is_logged_in},
         {'icon': lv.ICON_FIRMWARE, 'label': 'Firmware', 'submenu': update_menu},
-        {'icon': lv.ICON_BITCOIN, 'label': 'Bitcoin', 'submenu': bitcoin_menu, 'is_visible': is_logged_in},
+        {'icon': lv.ICON_MONERO, 'label': 'Monero', 'submenu': bitcoin_menu, 'is_visible': is_logged_in},
         {'icon': lv.ICON_ADVANCED, 'label': 'Advanced', 'submenu': advanced_menu, 'is_visible': is_logged_in},
         {'icon': lv.ICON_EXTENSIONS, 'label': 'Extensions', 'submenu': extensions_menu},
         # {'icon': lv.ICON_ADVANCED, 'label': 'Developer', 'submenu': developer_menu, 'is_visible': is_logged_in},

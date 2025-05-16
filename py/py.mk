@@ -166,6 +166,14 @@ $(FOUNDATION_RUST_LIB): $(FOUNDATION_RUST_SRC)
 	@cargo build --manifest-path $(FOUNDATION_RUST)/Cargo.toml --target $(RUST_TARGET) --release
 # FOUNDATION CHANGE: END
 
+#Monero Mnemonics
+
+MM_PATH = extmod/monero-mnemonics
+MM_DIR = $(TOP)/$(MM_PATH)
+#MM_MPY = $(MM_PATH)/monero-mnemonics.c
+INC += -I$(MM_DIR)
+SRC_MOD += $(MM_PATH)/legacy_monero_mnemonic.c #$(MM_MPY)
+
 
 # py object files
 PY_CORE_O_BASENAME = $(addprefix py/,\

@@ -17,7 +17,7 @@ const char** legacy_monero_mnemonic_get_word_list(enum MoneroLanguage language) 
     }
 }
 
-const uint8_t legacy_monero_mnemonic_language_prefix_length(enum MoneroLanguage language) {
+uint8_t legacy_monero_mnemonic_language_prefix_length(enum MoneroLanguage language) {
     switch(language) {
     case MoneroEnglish:
         return MONERO_ENGLISH_PREFIX_LENGTH;
@@ -31,16 +31,18 @@ int32_t legacy_monero_mnemonic_get_checksum_index(const char** mnemonic, enum Mo
     if (unique_prefix_length <= 0) return -1;
 
     uint32_t trimmed_words_length = unique_prefix_length*MONERO_MNEMONIC_WORDS_COUNT;
-    char* trimmed_words = malloc(sizeof(char)*(trimmed_words_length+1));
-    if (!trimmed_words) return -1;
+    char trimmed_words[MONERO_MAXIMUM_PREFIX_LENGTH*MONERO_MNEMONIC_WORDS_COUNT] = { '\0' };
 
     for (uint32_t i = 0; i < MONERO_MNEMONIC_WORDS_COUNT; i++) {
-        strncat(trimmed_words, mnemonic[i], unique_prefix_length);
+        //strncat not available for arm-none-eabi
+        //strncat(trimmed_words, mnemonic[i], unique_prefix_length);
+        for (uint32_t j = 0; j < unique_prefix_length; j++) {
+            trimmed_words[unique_prefix_length*i+j] = mnemonic[i][j];
+        }
     }
     uint32_t index = (uzlib_crc32(trimmed_words, trimmed_words_length, 0xffffffff) ^ 0xffffffff) % MONERO_MNEMONIC_WORDS_COUNT;
 
     memzero(trimmed_words, sizeof(trimmed_words));
-    free(trimmed_words);
     return index;
 }
 
@@ -53,7 +55,8 @@ void create_pointer_to_monero_mnemonic_blocks(char* mnemonic_blocks[MONERO_MNEMO
 uint32_t load_into_static_monero_mnemonic(const char* words, char* mnemonic_blocks[MONERO_MNEMONIC_WORDS_COUNT+1]) {
     create_pointer_to_monero_mnemonic_blocks(mnemonic_blocks);
     if (!words) return 0;
-    char words_copy[MONERO_MNEMONIC_MAXIMUM_LENGTH];
+    //strtok not available for arm-none-eabi
+    /*char words_copy[MONERO_MNEMONIC_MAXIMUM_LENGTH];
     strcpy(words_copy, words);
     char* current_word = strtok(words_copy, " ");
     uint32_t word_count = 0;
@@ -64,8 +67,24 @@ uint32_t load_into_static_monero_mnemonic(const char* words, char* mnemonic_bloc
         }
         current_word = strtok(NULL, " ");
     }
-    memzero(words_copy, sizeof(words));
-    return word_count;
+    memzero(words_copy, sizeof(words));*/
+    const char* searchPointer = words;
+    uint32_t i = 0;
+    while (searchPointer && *searchPointer != '\0') {
+         if (*searchPointer == ' ') {
+             searchPointer++;
+             continue;
+         }
+         for (uint32_t j = 0; j <= MONERO_MAXIMUM_WORD_LENGTH; j++) {
+             if (*searchPointer == ' ' || *searchPointer == '\0') {
+                 break;
+             }
+             mnemonic_blocks[i][j] = *searchPointer;
+             searchPointer++;
+         }
+         i++;
+    }
+    return i;
 }
 
 int32_t legacy_monero_mnemonic_check_words(const char* words[MONERO_MNEMONIC_WORDS_COUNT+1], enum MoneroLanguage language) {

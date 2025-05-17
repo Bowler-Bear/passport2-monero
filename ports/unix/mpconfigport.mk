@@ -49,6 +49,7 @@ CFLAGS_MOD += -I$(MICROPY_EXTMOD_DIR) \
   -I$(MICROPY_EXTMOD_DIR)/foundation \
   -I$(MICROPY_EXTMOD_DIR)/quirc \
   -I$(MICROPY_EXTMOD_DIR)/uasyncio \
+  -I$(MICROPY_EXTMOD_DIR)/moneromnemonic \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto/aes \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto/chacha20poly1305 \

@@ -168,11 +168,11 @@ $(FOUNDATION_RUST_LIB): $(FOUNDATION_RUST_SRC)
 
 #Monero Mnemonics
 
-MM_PATH = extmod/monero-mnemonics
+MM_PATH = extmod/moneromnemonics
 MM_DIR = $(TOP)/$(MM_PATH)
-#MM_MPY = $(MM_PATH)/monero-mnemonics.c
+MM_MPY = $(MM_PATH)/moneromnemonics.c
 INC += -I$(MM_DIR)
-SRC_MOD += $(MM_PATH)/legacy_monero_mnemonic.c #$(MM_MPY)
+SRC_MOD += $(MM_PATH)/legacy_monero_mnemonic.c $(MM_MPY)
 
 
 # py object files
@@ -337,6 +337,7 @@ PY_EXTMOD_O_BASENAME = \
 	lib/embed/abort_.o \
 	lib/utils/printf.o \
 	extmod/bufhelper.o \
+	extmod/moneromnemonics/moneromnemonics.o \
 	extmod/foundation/modfoundation.o \
 	extmod/foundation/bip39_utils.o \
     extmod/foundation/bip39_word_info.o \

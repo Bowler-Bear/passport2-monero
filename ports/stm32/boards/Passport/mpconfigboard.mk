@@ -43,7 +43,8 @@ CFLAGS_MOD += -I$(MICROPY_EXTMOD_DIR) \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto/aes \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto/chacha20poly1305 \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto/ed25519-donna \
-  -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/core
+  -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/core \
+  -I$(MICROPY_EXTMOD_DIR)/moneromnemonics
 
 CFLAGS_MOD += -DBITCOIN_ONLY=1 -DAES_128=1 -DAES_192=1
 

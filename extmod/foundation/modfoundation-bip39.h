@@ -15,6 +15,7 @@
 
 extern word_info_t bip39_word_info[];
 extern word_info_t bytewords_word_info[]; // TODO: Restructure this so bip39 and bytewords are separate
+extern word_info_t monero_english_word_info[];
 
 /// package: foundation.bip39
 
@@ -30,7 +31,7 @@ STATIC mp_obj_t mod_foundation_bip39_get_words_matching_prefix(size_t n_args, co
 
     int max_matches = mp_obj_get_int(args[1]);
 
-    // Must be "bip39" or "bytewords"
+    // Must be "bip39", "bytewords", or "moneroenglish"
     mp_check_self(mp_obj_is_str_or_bytes(args[2]));
     GET_STR_DATA_LEN(args[2], word_list_str, word_list_len);
 
@@ -45,6 +46,11 @@ STATIC mp_obj_t mod_foundation_bip39_get_words_matching_prefix(size_t n_args, co
     {
         word_info = bytewords_word_info;
         num_words = 256;
+    }
+    else if (strcmp("moneroenglish", (char *)word_list_str) == 0)
+    {
+        word_info = monero_english_word_info;
+        num_words = 1626;
     }
     else
     {

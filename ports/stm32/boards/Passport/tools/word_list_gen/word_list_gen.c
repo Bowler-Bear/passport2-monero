@@ -8,10 +8,11 @@
 #include <string.h>
 
 uint32_t NUM_WORDS = 0;
-#define MAX_WORD_LEN 8
+#define MAX_WORD_LEN 12
 
 extern const char* bip39_words[];
 extern const char* bytewords_words[];
+extern const char* monero_english_words[];
 
 #include <assert.h>
 #include <stdint.h>
@@ -49,11 +50,18 @@ uint32_t letter_to_offset(char ch) {
     return 999;
 }
 
-// Convert a seed word to its equivalent in keypad numbers - max will be 8 digits long
+// Convert a seed word to its equivalent in keypad numbers - max will be 9 digits long
 uint32_t word_to_keypad_numbers(char* word) {
     uint32_t result = 0;
 
     uint32_t len = strlen(word);
+    /*
+    The digits are represented by a 32 bit unsigned integer which has a maximum value of just over
+    4 billion. This means that the maximum value to represent the most digits is 999999999(9 digits).
+    Monero's seed list has multiple words that are over 9 characters long, so we need to stop before
+    going over 9 digits otherwise we will return an overflowed inaccurate integer.
+    */
+    if(len > 9) len = 9;
 
     for (uint32_t i = 0; i < len; i++) {
         char     letter = word[i];
@@ -67,6 +75,7 @@ uint16_t word_to_bit_offsets(char* word) {
     uint16_t result = 0;
 
     uint32_t len   = strlen(word);
+    if(len > 9) len = 9;
     uint16_t shift = 14;
 
     for (uint32_t i = 0; i < len; i++) {
@@ -119,7 +128,7 @@ void make_num_pairs_array(const char** words, char* prefix) {
 }
 
 void printUsage() {
-    printf("Usage: word_list_gen [bip39|bytewords]\n");
+    printf("Usage: word_list_gen [bip39|bytewords|monero_english]\n");
 }
 
 int main(int argc, char** argv) {
@@ -131,6 +140,9 @@ int main(int argc, char** argv) {
         } else if (strcmp(argv[1], "bytewords") == 0) {
             words     = bytewords_words;
             NUM_WORDS = 256;
+        } else if (strcmp(argv[1], "monero_english") == 0) {
+            words     = monero_english_words;
+            NUM_WORDS = 1626;
         }
     }
 

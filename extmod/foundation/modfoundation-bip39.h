@@ -57,7 +57,7 @@ STATIC mp_obj_t mod_foundation_bip39_get_words_matching_prefix(size_t n_args, co
         return mp_const_none;
     }
 
-    char matches[MATCHES_LEN];
+    char matches[MATCHES_LEN] = { '\0' };
 
     get_words_matching_prefix((char *)prefix_str, matches, MATCHES_LEN, max_matches, word_info, num_words);
 

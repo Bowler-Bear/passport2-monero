@@ -40,6 +40,8 @@ void clear_legacy_monero_mnemonic(void);
 
 int32_t legacy_monero_mnemonic_check(const char* mnemonic, enum MoneroLanguage language);
 
+int32_t monero_mnemonic_find_word_index_allowing_partial_word(const char* word, enum MoneroLanguage language, uint8_t allow_partial_word);
+
 int32_t monero_mnemonic_find_word_index(const char* word, enum MoneroLanguage language);
 
 uint8_t legacy_monero_mnemonic_to_seed(const char* mnemonic, uint8_t seed[MONERO_SEED_BITS/8], enum MoneroLanguage language);

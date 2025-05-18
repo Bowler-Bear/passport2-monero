@@ -164,16 +164,22 @@ void clear_legacy_monero_mnemonic(void) {
     memzero(static_monero_mnemonic, sizeof(static_monero_mnemonic));
 }
 
-int32_t monero_mnemonic_find_word_index(const char* word, enum MoneroLanguage language) {
-    if (!word || strlen(word) == 0) return -1;
+int32_t monero_mnemonic_find_word_index_allowing_partial_word(const char* word, enum MoneroLanguage language, uint8_t allow_partial_word) {
+    if (!word || strlen(word) < 3) return -1;
 
     const char** word_list = legacy_monero_mnemonic_get_word_list(language);
-    if (!word_list) return 0;
+    if (!word_list) return -1;
 
     uint32_t lower = 0, upper = MONERO_WORDLIST_WORD_COUNT - 1;
+    uint8_t word_length = strlen(word);
+    int32_t comparison_result = 0;
     while (upper >= lower) {
         uint32_t tested_midpoint = (upper-lower)/2 + lower;
-        int32_t comparison_result = strcmp(word_list[tested_midpoint], word);
+        if (allow_partial_word) {
+            comparison_result = strncmp(word_list[tested_midpoint], word, word_length);
+        } else {
+            comparison_result = strcmp(word_list[tested_midpoint], word);
+        }
         if (comparison_result < 0) {
             lower = tested_midpoint + 1;
         } else if (comparison_result == 0) {
@@ -183,6 +189,10 @@ int32_t monero_mnemonic_find_word_index(const char* word, enum MoneroLanguage la
         }
     }
     return -1;
+}
+
+int32_t monero_mnemonic_find_word_index(const char* word, enum MoneroLanguage language) {
+    return monero_mnemonic_find_word_index_allowing_partial_word(word, language, 0);
 }
 
 uint8_t legacy_monero_mnemonic_to_seed(const char* mnemonic, uint8_t seed[MONERO_SEED_BITS/8], enum MoneroLanguage language) {

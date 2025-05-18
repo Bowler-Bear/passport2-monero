@@ -1382,11 +1382,17 @@ word_info_t monero_english_word_info[] = {
   {22667625, 0x1682}, // abnormal
   {22687842, 0x29ca}, // acoustic
   {22727483, 0x18e9}, // abrasive
+  {22837668, 0x8999}, // cavernous
   {23342833, 0x0284}, // addicted
   {23437483, 0x05e9}, // adhesive
+  {23736254, 0x094a}, // adrenalin
+  {23836887, 0x0946}, // adventure
   {24362257, 0x6a8b}, // bifocals
+  {24472828, 0x0220}, // aggravate
   {24563687, 0x2853}, // ailments
   {24567463, 0x9aa5}, // chlorine
+  {24662852, 0x6698}, // binocular
+  {24666845, 0x6246}, // bimonthly
   {24667842, 0x06ca}, // agnostic
   {24845426, 0xaaa1}, // civilian
   {24933559, 0x615a}, // biweekly
@@ -1394,6 +1400,8 @@ word_info_t monero_english_word_info[] = {
   {25848833, 0x2211}, // altitude
   {26323683, 0x1621}, // anecdote
   {26437483, 0xa5e9}, // cohesive
+  {26937436, 0x6aa5}, // boyfriend
+  {27248727, 0x2622}, // arbitrary
   {27464625, 0xa892}, // criminal
   {27767833, 0x3e84}, // assorted
   {27827486, 0x14a4}, // aquarium
@@ -1405,11 +1413,25 @@ word_info_t monero_english_word_info[] = {
   {28746377, 0x5e5f}, // business
   {29253633, 0x0154}, // awakened
   {29546337, 0xaa46}, // cylinder
+  {32236874, 0x694a}, // eccentric
+  {32643768, 0x0469}, // dangerous
+  {32666642, 0x698a}, // economics
   {32782842, 0x6c0a}, // ecstatic
+  {32837376, 0x49ca}, // eavesdrop
+  {32868537, 0x0527}, // dauntless
   {33278279, 0x964a}, // february
+  {33342283, 0x1281}, // dedicated
+  {33342436, 0x6aa5}, // efficient
+  {33493728, 0x1620}, // dehydrate
   {33532833, 0x1184}, // dejected
+  {33636726, 0x18a1}, // deodorant
+  {33666787, 0x1272}, // demonstrate
   {33784825, 0x9ca2}, // festival
   {33822833, 0x4604}, // educated
+  {33983748, 0x1468}, // dexterity
+  {34284662, 0xa8a4}, // fictional
+  {34333736, 0x2a65}, // different
+  {34684784, 0x48b2}, // egotistic
   {34732833, 0x2984}, // directed
   {34756628, 0x2280}, // diplomat
   {34782623, 0x2c19}, // distance
@@ -1420,15 +1442,22 @@ word_info_t monero_english_word_info[] = {
   {36872623, 0x5219}, // entrance
   {37436359, 0xa94a}, // friendly
   {37696464, 0x2864}, // drowning
+  {37736842, 0x7d48}, // essential
+  {37746624, 0x7290}, // espionage
   {38255464, 0x19a4}, // duckling
   {38258283, 0x6241}, // evaluate
   {38364647, 0x6593}, // evenings
   {38448483, 0x9229}, // fugitive
+  {38478388, 0x4950}, // etiquette
   {38556377, 0x1a5f}, // dullness
   {38728466, 0x1829}, // duration
   {38735243, 0x9d81}, // fuselage
+  {38764743, 0x99b5}, // furnished
+  {39463546, 0x0929}, // dwindling
   {39626483, 0x2421}, // dynamite
   {39753942, 0x2e5a}, // dyslexic
+  {39784748, 0x55b8}, // exquisite
+  {42628743, 0x4161}, // hamburger
   {42978225, 0x4b09}, // haystack
   {43343464, 0x5058}, // hedgehog
   {43368489, 0x8522}, // identity
@@ -1436,33 +1465,49 @@ word_info_t monero_english_word_info[] = {
   {43678663, 0x1325}, // gemstone
   {43748283, 0x5e01}, // hesitate
   {44426842, 0x204a}, // gigantic
+  {46225262, 0x8486}, // imbalance
   {46228483, 0x9229}, // inactive
+  {46332843, 0x2205}, // godfather
   {46352633, 0x9a04}, // inflamed
+  {46387874, 0x91ca}, // industrial
   {46437833, 0x91c4}, // ingested
   {46478464, 0x6b24}, // hoisting
   {46484283, 0x9881}, // initiate
   {46533474, 0x28ad}, // goldfish
   {46662368, 0x9694}, // innocent
+  {46674264, 0x9a06}, // inorganic
   {46774825, 0x6c82}, // hospital
   {46836333, 0x9144}, // intended
+  {46837646, 0x2999}, // governing
   {46863283, 0x9501}, // inundate
   {46927359, 0x908a}, // inwardly
   {47652833, 0xba04}, // isolated
   {47748283, 0xaa01}, // irritate
+  {48463727, 0x8962}, // itinerary
   {49376436, 0x6285}, // hydrogen
+  {52267286, 0x8682}, // laboratory
   {52642766, 0x442a}, // kangaroo
   {52648243, 0x8441}, // language
+  {52862446, 0x8599}, // launching
   {53288737, 0x9867}, // lectures
+  {53559347, 0x1aab}, // jellyfish
   {53672739, 0x1822}, // jeopardy
   {53926273, 0x5988}, // keyboard
+  {54337895, 0xa9ca}, // lifestyle
   {54539473, 0xa52d}, // likewise
   {54778425, 0xa329}, // lipstick
   {54824367, 0x6257}, // kitchens
   {56277225, 0x50c9}, // knapsack
+  {56462568, 0xa9a8}, // loincloth
+  {56695334, 0x5890}, // knowledge
   {56737447, 0xa8d8}, // lordship
   {58539276, 0x9508}, // lukewarm
   {58836453, 0x1969}, // juvenile
   {62334368, 0x9494}, // obedient
+  {62442255, 0x028a}, // magically
+  {62669468, 0x9669}, // obnoxious
+  {62737826, 0x9da1}, // observant
+  {62783738, 0x0c69}, // masterful
   {62837425, 0x09a9}, // maverick
   {62884225, 0x44a2}, // nautical
   {63242642, 0x191a}, // mechanic
@@ -1477,22 +1522,29 @@ word_info_t monero_english_word_info[] = {
   {64876436, 0x6285}, // nitrogen
   {65967427, 0xa82b}, // olympics
   {66266464, 0x9a24}, // oncoming
+  {66288762, 0x6864}, // nocturnal
   {66477466, 0x8be9}, // omission
   {66478873, 0x2b19}, // moisture
+  {66752844, 0x9e11}, // onslaught
   {66784376, 0x6859}, // northern
   {66836368, 0x2914}, // movement
   {66843759, 0x216a}, // motherly
   {67626368, 0xa414}, // ornament
   {67767483, 0x82e1}, // opposite
+  {68437947, 0x858b}, // otherwise
   {68472623, 0x5b19}, // nuisance
+  {68773583, 0x9b69}, // ourselves
   {68827325, 0x9191}, // outbreak
   {68874355, 0x535a}, // nutshell
+  {72238722, 0x8922}, // racetrack
   {72268243, 0xc601}, // sabotage
   {72622537, 0x0617}, // pancakes
   {72636659, 0x848a}, // randomly
   {72674538, 0x0064}, // pamphlet
   {72723473, 0x082d}, // paradise
   {72823726, 0xc641}, // saucepan
+  {72836368, 0x0914}, // pavements
+  {72967466, 0xc619}, // saxophone
   {72967467, 0x01d8}, // pawnshop
   {73285427, 0x19a2}, // peculiar
   {73326842, 0x104a}, // pedantic
@@ -1500,13 +1552,17 @@ word_info_t monero_english_word_info[] = {
   {73468378, 0x999c}, // reinvest
   {73546353, 0x9649}, // rekindle
   {73564237, 0x92a7}, // rejoices
+  {73643462, 0xd2a4}, // semifinal
   {73674253, 0xd799}, // sensible
+  {73783623, 0xd045}, // september
   {73783623, 0xd559}, // sequence
   {74225537, 0xd267}, // shackles
   {74254647, 0xe693}, // siblings
   {74256377, 0xe95f}, // sickness
+  {74327268, 0x14c4}, // pheasants
   {74335425, 0xe169}, // sidekick
   {74448464, 0xe124}, // sighting
+  {74623735, 0xe666}, // sincerely
   {74625464, 0xda64}, // shocking
   {74675378, 0xe09c}, // simplest
   {74735463, 0x21a5}, // pipeline
@@ -1514,13 +1570,16 @@ word_info_t monero_english_word_info[] = {
   {74833533, 0xd6a4}, // shuffled
   {74882833, 0xe104}, // situated
   {75225367, 0xe257}, // slackens
+  {75337537, 0xe527}, // sleepless
   {75478464, 0xda24}, // skirting
   {75688464, 0x2824}, // plotting
   {76224464, 0x2264}, // poaching
   {76358464, 0xc624}, // smelting
   {76389273, 0xe809}, // software
+  {76639437, 0xe116}, // somewhere
   {76774253, 0x2f99}, // possible
   {76783687, 0x2853}, // portents
+  {76837344, 0xe998}, // sovereign
   {76844533, 0xc424}, // smuggled
   {76884376, 0xe459}, // southern
   {77536343, 0xc948}, // splendid
@@ -1528,26 +1587,34 @@ word_info_t monero_english_word_info[] = {
   {78225464, 0xc264}, // stacking
   {78333659, 0xd05a}, // suddenly
   {78482273, 0xd88d}, // suitcase
+  {78625745, 0xca4a}, // stockpile
   {78675467, 0x1067}, // pumpkins
   {78724633, 0xc894}, // strained
   {78737467, 0xd1aa}, // superior
   {78845377, 0x919f}, // ruthless
   {78866464, 0xc564}, // stunning
+  {78954745, 0xcab6}, // stylishly
   {79552287, 0xea17}, // syllabus
   {79637663, 0xe4a1}, // syndrome
   {79678667, 0xe023}, // symptoms
   {82228466, 0x8829}, // vacation
   {82376537, 0x00a7}, // tadpoles
   {82737879, 0x01ca}, // tapestry
+  {82764743, 0x09b5}, // tarnished
   {82786377, 0x8c5f}, // vastness
+  {83246422, 0x1968}, // technical
   {83273767, 0x1228}, // teardrop
   {83666687, 0x9627}, // venomous
   {83675283, 0x1081}, // template
+  {83743422, 0x9aa8}, // verification
   {83764625, 0x1892}, // terminal
   {83982665, 0x1469}, // textbook
+  {84328742, 0x142a}, // theatrics
+  {84397646, 0xa429}, // viewpoint
   {84445268, 0xa284}, // vigilant
   {84732836, 0x1905}, // threaten
   {85846283, 0x6201}, // ultimate
+  {86236346, 0x5549}, // unbending
   {86237243, 0x5288}, // unafraid
   {86273552, 0x4668}, // umbrella
   {86424659, 0x509a}, // ungainly
@@ -1556,6 +1623,7 @@ word_info_t monero_english_word_info[] = {
   {86545359, 0x5a5a}, // unlikely
   {86587859, 0x51ca}, // unjustly
   {86667769, 0x22a8}, // tomorrow
+  {86668423, 0x5629}, // unnoticed
   {86673633, 0x5854}, // unopened
   {86786833, 0x5584}, // unquoted
   {87266464, 0x4a24}, // upcoming
@@ -1566,74 +1634,6 @@ word_info_t monero_english_word_info[] = {
   {89339377, 0x05db}, // tweezers
   {92833676, 0x09a8}, // waveform
   {93272665, 0x9269}, // yearbook
-  {228376687, 0x8999}, // cavernous
-  {237362546, 0x094a}, // adrenalin
-  {238368873, 0x0946}, // adventure
-  {244728283, 0x0220}, // aggravate
-  {246628527, 0x6698}, // binocular
-  {246668459, 0x6246}, // bimonthly
-  {269374363, 0x6aa5}, // boyfriend
-  {272487279, 0x2622}, // arbitrary
-  {322368742, 0x694a}, // eccentric
-  {326437687, 0x0469}, // dangerous
-  {326666427, 0x698a}, // economics
-  {328373767, 0x49ca}, // eavesdrop
-  {328685377, 0x0527}, // dauntless
-  {333422833, 0x1281}, // dedicated
-  {333424368, 0x6aa5}, // efficient
-  {334937283, 0x1620}, // dehydrate
-  {336367268, 0x18a1}, // deodorant
-  {336667872, 0x1272}, // demonstrate
-  {339837489, 0x1468}, // dexterity
-  {342846625, 0xa8a4}, // fictional
-  {343337368, 0x2a65}, // different
-  {346847842, 0x48b2}, // egotistic
-  {377368425, 0x7d48}, // essential
-  {377466243, 0x7290}, // espionage
-  {384783883, 0x4950}, // etiquette
-  {387647433, 0x99b5}, // furnished
-  {394635464, 0x0929}, // dwindling
-  {397847483, 0x55b8}, // exquisite
-  {426287437, 0x4161}, // hamburger
-  {462252623, 0x8486}, // imbalance
-  {463328437, 0x2205}, // godfather
-  {463878742, 0x91ca}, // industrial
-  {466742642, 0x9a06}, // inorganic
-  {468376464, 0x2999}, // governing
-  {484637279, 0x8962}, // itinerary
-  {522672867, 0x8682}, // laboratory
-  {528624464, 0x8599}, // launching
-  {535593474, 0x1aab}, // jellyfish
-  {543378953, 0xa9ca}, // lifestyle
-  {564625684, 0xa9a8}, // loincloth
-  {566953343, 0x5890}, // knowledge
-  {624422559, 0x028a}, // magically
-  {626694687, 0x9669}, // obnoxious
-  {627378268, 0x9da1}, // observant
-  {627837385, 0x0c69}, // masterful
-  {662887625, 0x6864}, // nocturnal
-  {667528448, 0x9e11}, // onslaught
-  {684379473, 0x858b}, // otherwise
-  {687735837, 0x9b69}, // ourselves
-  {722387225, 0x8922}, // racetrack
-  {728363687, 0x0914}, // pavements
-  {729674663, 0xc619}, // saxophone
-  {736434625, 0xd2a4}, // semifinal
-  {737836237, 0xd045}, // september
-  {743272687, 0x14c4}, // pheasants
-  {746237359, 0xe666}, // sincerely
-  {753375377, 0xe527}, // sleepless
-  {766394373, 0xe116}, // somewhere
-  {768373446, 0xe998}, // sovereign
-  {786257453, 0xca4a}, // stockpile
-  {789547459, 0xcab6}, // stylishly
-  {827647433, 0x09b5}, // tarnished
-  {832464225, 0x1968}, // technical
-  {837434228, 0x9aa8}, // verification
-  {843287427, 0x142a}, // theatrics
-  {843976468, 0xa429}, // viewpoint
-  {862363464, 0x5549}, // unbending
-  {866684233, 0x5629}, // unnoticed
-  {937837329, 0x9c60}, // yesterday
-  {948437296, 0x2120} // withdrawn
+  {93783732, 0x9c60}, // yesterday
+  {94843729, 0x2120} // withdrawn
 };

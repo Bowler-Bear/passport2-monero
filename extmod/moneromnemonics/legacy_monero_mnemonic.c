@@ -97,13 +97,23 @@ int32_t legacy_monero_mnemonic_check(const char* mnemonic, enum MoneroLanguage l
     //TODO: Auto detect mnemonic language if more languages added
     char* words[MONERO_MNEMONIC_WORDS_COUNT+1];
     uint32_t word_count = load_into_static_monero_mnemonic(mnemonic, words);
-    if (word_count != MONERO_MNEMONIC_WORDS_COUNT+1) {
+    if (word_count == MONERO_MNEMONIC_WORDS_COUNT) {
+        for (uint8_t i = 0; i < MONERO_MNEMONIC_WORDS_COUNT; i++) {
+            if (monero_mnemonic_find_word_index(words[i], language) == -1) {
+                clear_legacy_monero_mnemonic();
+                return 0;
+            }
+        }
+        clear_legacy_monero_mnemonic();
+        return 1;
+    } else if (word_count == MONERO_MNEMONIC_WORDS_COUNT+1) {
+        int32_t checksum_match = legacy_monero_mnemonic_check_words((const char**)words, language);
+        clear_legacy_monero_mnemonic();
+        return checksum_match;
+    } else {
         clear_legacy_monero_mnemonic();
         return 0;
     }
-    int32_t checksum_match = legacy_monero_mnemonic_check_words((const char**)words, language);
-    clear_legacy_monero_mnemonic();
-    return checksum_match;
 }
 
 const char* legacy_monero_mnemonic_from_seed(const uint8_t* seed, uint32_t len, enum MoneroLanguage language) {

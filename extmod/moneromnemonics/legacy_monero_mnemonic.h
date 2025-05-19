@@ -44,6 +44,8 @@ int32_t monero_mnemonic_find_word_index_allowing_partial_word(const char* word, 
 
 int32_t monero_mnemonic_find_word_index(const char* word, enum MoneroLanguage language);
 
+const char* get_monero_mnemonic_word_from_list(const int32_t word_index, enum MoneroLanguage language);
+
 uint8_t legacy_monero_mnemonic_to_seed(const char* mnemonic, uint8_t seed[MONERO_SEED_BITS/8], enum MoneroLanguage language);
 
 #endif

@@ -12,7 +12,6 @@
 #define MAX_WORD_LEN 8
 
 #include "bip39_utils.h"
-#include "monero_english_words.h"
 #include "legacy_monero_mnemonic.h"
 
 extern word_info_t bip39_word_info[];
@@ -123,11 +122,13 @@ void get_words_matching_prefix(char*              prefix,
             if (word_info == monero_english_word_info && len == MAX_WORD_LEN) {
                 int32_t word_index = monero_mnemonic_find_word_index_allowing_partial_word((const char*)pnext_match, MoneroEnglish, 1);
                 if (word_index >= 0 && word_index < MONERO_WORDLIST_WORD_COUNT) {
-                    const char* found_word = monero_english_words[word_index];
-                    strcpy(pnext_match, found_word);
-                    uint8_t length_diff = strlen(found_word) - len;
-                    total_written += length_diff;
-                    pnext_match += length_diff;
+                    const char* found_word = get_monero_mnemonic_word_from_list(word_index, MoneroEnglish);
+                    if(found_word && strlen(found_word) > 0) {
+                        strcpy(pnext_match, found_word);
+                        uint8_t length_diff = strlen(found_word) - len;
+                        total_written += length_diff;
+                        pnext_match += length_diff;
+                    }
                 }
             }
 

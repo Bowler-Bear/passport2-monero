@@ -195,6 +195,15 @@ int32_t monero_mnemonic_find_word_index(const char* word, enum MoneroLanguage la
     return monero_mnemonic_find_word_index_allowing_partial_word(word, language, 0);
 }
 
+const char* get_monero_mnemonic_word_from_list(const int32_t word_index, enum MoneroLanguage language) {
+    if (word_index < 0 || word_index >= MONERO_WORDLIST_WORD_COUNT) return 0;
+
+    const char** word_list = legacy_monero_mnemonic_get_word_list(language);
+    if (!word_list) return 0;
+
+    return word_list[word_index];
+}
+
 uint8_t legacy_monero_mnemonic_to_seed(const char* mnemonic, uint8_t seed[MONERO_SEED_BITS/8], enum MoneroLanguage language) {
     if(!mnemonic || strlen(mnemonic) > MONERO_MNEMONIC_MAXIMUM_LENGTH) return 0;
     char* words[MONERO_MNEMONIC_WORDS_COUNT+1];

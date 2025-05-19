@@ -1256,8 +1256,7 @@ def are_hidden_keys_showing():
 
 
 def is_passphrase_active():
-    import stash
-    return stash.bip39_passphrase != ''
+    return False
 
 
 MSG_CHARSET = range(32, 127)

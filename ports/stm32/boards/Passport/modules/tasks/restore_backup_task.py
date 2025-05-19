@@ -91,10 +91,7 @@ async def restore_backup_task(on_done, decryption_password, backup_file_path):
         raw[0:len(x)] = x
 
         # Check that we can decode this right (might be different firmware)
-        opmode, bits, node = stash.SecretStash.decode(raw)
-        if not node:
-            await on_done(Error.CORRUPT_BACKUP_FILE)
-            return
+        opmode, bits = stash.SecretStash.decode(raw)
 
         # Cerify against xprv value (if we have it)
         if 'xprv' in vals:

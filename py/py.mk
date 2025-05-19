@@ -390,6 +390,10 @@ PY_EXTMOD_O_BASENAME = \
 	extmod/trezor-firmware/crypto/chacha20poly1305/chacha_merged.o \
 	extmod/trezor-firmware/crypto/chacha20poly1305/poly1305-donna.o \
 	extmod/trezor-firmware/crypto/chacha20poly1305/rfc7539.o \
+	extmod/trezor-firmware/crypto/monero/xmr.o \
+	extmod/trezor-firmware/crypto/monero/serialize.o \
+	extmod/trezor-firmware/crypto/monero/range_proof.o \
+	extmod/trezor-firmware/crypto/monero/base58.o \
     extmod/trezor-firmware/crypto/shamir.o \
     extmod/trezor-firmware/crypto/groestl.o \
     extmod/trezor-firmware/crypto/slip39.o \

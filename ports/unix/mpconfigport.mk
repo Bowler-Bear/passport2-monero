@@ -42,7 +42,7 @@ MICROPY_PY_JNI = 0
 # as submodules (currently affects only libffi).
 MICROPY_STANDALONE = 0
 
-CFLAGS_MOD += -DBITCOIN_ONLY=1 -DAES_128=1 -DAES_192=1
+CFLAGS_MOD += -DBITCOIN_ONLY=1 -DUSE_MONERO=1 -DAES_128=1 -DAES_192=1
 
 MICROPY_EXTMOD_DIR = ../../extmod
 CFLAGS_MOD += -I$(MICROPY_EXTMOD_DIR) \
@@ -54,6 +54,7 @@ CFLAGS_MOD += -I$(MICROPY_EXTMOD_DIR) \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto/aes \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto/chacha20poly1305 \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto/ed25519-donna \
+  -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/crypto/monero \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/core \
   -I$(MICROPY_EXTMOD_DIR)/trezor-firmware/core/embed/unix \
   -I$(MICROPY_EXTMOD_DIR)/../ports/stm32/boards/Passport/include \

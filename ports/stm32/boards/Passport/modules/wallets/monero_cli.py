@@ -7,16 +7,23 @@
 import ujson
 import stash
 from data_codecs.qr_type import QRType
+from xmr.monero import generate_monero_keys
 
 def view_wallet_export(sw_wallet=None, addr_type=None, acct_num=0, multisig=False, legacy=False, export_mode='qr', qr_type=None):
-    with stash.SensitiveValues() as sv:
-        #TODO: Generate private view key and public address
-        private_view_key = "view_key"
-        public_address = "public_address"
-
-    rv = dict(PrivateViewKey=private_view_key, PublicAddress=public_address)
-
     accts = [{'fmt': addr_type, 'deriv': None, 'acct': acct_num}]
+    with stash.SensitiveValues() as sv:
+        _, spend_pub, private_view_key, view_pub = generate_monero_keys(sv.raw)
+        #TODO: Generate Testnet addresses too
+        try:
+            from xmr.addresses import encode_addr
+            from xmr.networks import NetworkTypes, net_version
+            from xmr import crypto
+            public_address = encode_addr(net_version(NetworkTypes.MAINNET), crypto.encodepoint(spend_pub), crypto.encodepoint(view_pub))
+        except Exception as e:
+            return (dict(error=e), accts)
+
+    rv = dict(PrivateViewKey=''.join('{:02x}'.format(x) for x in crypto.encodeint(private_view_key)), PublicAddress=public_address)
+
     msg = ujson.dumps(rv)
     return (msg, accts)
 

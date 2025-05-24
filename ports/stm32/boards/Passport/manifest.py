@@ -339,4 +339,12 @@ freeze('$(MPY_DIR)/ports/stm32/boards/Passport/modules',
         'extensions/postmix_extension.py',
         'extensions/key_manager_extension.py'))
 
+# Xmr
+freeze('$(MPY_DIR)/ports/stm32/boards/Passport/modules',
+       ('xmr/addresses.py',
+        'xmr/crypto/__init__.py',
+        'xmr/monero.py',
+        'xmr/networks.py',
+        'extensions/key_manager_extension.py'))
+
 include("$(MPY_DIR)/extmod/uasyncio/manifest.py")

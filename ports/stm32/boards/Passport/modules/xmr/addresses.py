@@ -1,6 +1,6 @@
-from trezor.crypto import monero as tcry
+from trezorcrypto import monero as tcry
 
-from apps.monero.xmr.networks import NetworkTypes, net_version
+from xmr.networks import NetworkTypes, net_version
 
 if False:
     from apps.monero.xmr.types import Ge25519

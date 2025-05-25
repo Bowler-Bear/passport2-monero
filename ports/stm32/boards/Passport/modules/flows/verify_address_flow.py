@@ -62,8 +62,7 @@ class VerifyAddressFlow(Flow):
             await ErrorPage("Not a valid {} address.".format(chain_name)).show()
             return
 
-        #TODO: Integrated Addresses
-        if self.addr_type == AddressTypes.PRIMARY:
+        if self.addr_type == AddressTypes.PRIMARY or self.addr_type == AddressTypes.INTEGRATED:
             self.lower_bound = 0
             self.upper_bound = 1
         elif self.acct_num == 0:
@@ -96,34 +95,36 @@ class VerifyAddressFlow(Flow):
     async def not_found(self):
         from pages import ErrorPage
 
-        # Address was not found in that batch of 100, so offer to keep searching
-        msg = 'Address Not Found\nRange Checked:\n'
-
-        if self.addr_type == AddressTypes.PRIMARY:
-            template_string = 'Primary Address: {}({}-{}, 0)'
-        else: #if self.addr_type == AddressTypes.SUB:
-            template_string = 'Subaddresses: ({}, {}-{})'
-        #elif self.addr_type == AddressTypes.INTEGRATED:
-        #    template_string = 'Integrated Addreses: {}({}-{}, 0)'
-        msg += template_string.format(self.acct_num if self.addr_type == AddressTypes.SUB else '', self.lower_bound, self.upper_bound-1)
-
-        msg += '\n\nContinue searching?'
-
-        result = await ErrorPage(msg, left_micron=microns.Cancel, right_micron=microns.Checkmark).show()
-        if result:
-            self.lower_bound = self.upper_bound
-            self.upper_bound = self.lower_bound + _NUM_TO_CHECK
-            self.goto(self.search_for_address)
-        else:
+        if self.addr_type == AddressTypes.PRIMARY or self.addr_type == AddressTypes.INTEGRATED:
+            msg = 'That {} address does not belong to this wallet.'.format('primary' if self.addr_type == AddressTypes.PRIMARY else 'integerated')
+            await ErrorPage(msg, left_micron=microns.Cancel, right_micron=None).show()
             self.set_result(False)
+        else:
+            msg = 'Address Not Found\nRange Checked:\n'
+
+            msg += 'Subaddresses: ({}, {}-{})'.format(self.acct_num, self.lower_bound, self.upper_bound-1)
+
+            msg += '\n\nContinue searching?'
+
+            result = await ErrorPage(msg, left_micron=microns.Cancel, right_micron=microns.Checkmark).show()
+            if result:
+                self.lower_bound = self.upper_bound
+                self.upper_bound = self.lower_bound + _NUM_TO_CHECK
+                self.goto(self.search_for_address)
+            else:
+                self.set_result(False)
 
     async def found(self):
         from pages import SuccessPage
 
         if self.addr_type == AddressTypes.PRIMARY:
             address_type_name = 'Primary'
-            major_index = self.found_addr_idx
-            minor_index = 0
+            major_index = 0
+            minor_index = self.found_addr_idx
+        elif self.addr_type == AddressTypes.INTEGRATED:
+            address_type_name = 'Integrated'
+            major_index = 0
+            minor_index = self.found_addr_idx
         else: #if self.addr_type == AddressTypes.SUB:
             address_type_name = 'Sub'
             major_index = self.acct_num

@@ -23,25 +23,24 @@ async def search_for_address_task(
     from errors import Error
     from uasyncio import sleep_ms
     from xmr.monero import generate_monero_keys, generate_sub_address_keys
-    from xmr.addresses import AddressTypes, encode_addr
+    from xmr.addresses import AddressTypes, encode_addr, decode_addr
     from xmr.networks import NetworkTypes, net_version
     from xmr import crypto
 
     try:
         with stash.SensitiveValues() as sv:
-            _, spend_pub, view_priv, _ = generate_monero_keys(sv.raw)
-            r = range(lower, upper)
+            _, spend_pub, view_priv, view_pub = generate_monero_keys(sv.raw)
 
-            #TODO: check integerated address
-            if address_type == AddressTypes.PRIMARY:
-                major_index = 0
-            else:
-                major_index = account_number
-            for i in r:
-                minor_index = i
-                current_spend_pub, current_view_pub = generate_sub_address_keys(view_priv, spend_pub, major_index, minor_index)
+            if address_type == AddressTypes.PRIMARY or address_type == AddressTypes.INTEGRATED:
+                _, s_p, v_p = decode_addr(bytes(address, 'ascii'))
+                match = crypto.encodepoint(spend_pub) == s_p and crypto.encodepoint(view_pub) == v_p
+                await on_done(0 if match else -1, None if match else Error.ADDRESS_NOT_FOUND)
+                return
+
+            for i in range(lower, upper):
+                current_spend_pub, current_view_pub = generate_sub_address_keys(view_priv, spend_pub, account_number, i)
                 public_address = encode_addr(net_version(network_type, address_type == AddressTypes.SUB, address_type == AddressTypes.INTEGRATED), crypto.encodepoint(current_spend_pub), crypto.encodepoint(current_view_pub)).decode('ascii')
-                # print('i={}: indices=({}, {}) address_type={} public_address={} address={}\n'.format(i, major_index, minor_index, address_type, public_address, address))
+                # print('i={}: indices=({}, {}) address_type={} public_address={} address={}\n'.format(i, account_number, i, address_type, public_address, address))
                 if public_address == address:
                     await on_done(i, None)
                     return

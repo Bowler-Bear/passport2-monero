@@ -344,7 +344,6 @@ freeze('$(MPY_DIR)/ports/stm32/boards/Passport/modules',
        ('xmr/addresses.py',
         'xmr/crypto/__init__.py',
         'xmr/monero.py',
-        'xmr/networks.py',
-        'extensions/key_manager_extension.py'))
+        'xmr/networks.py'))
 
 include("$(MPY_DIR)/extmod/uasyncio/manifest.py")

@@ -61,6 +61,10 @@ class VerifyAddressFlow(Flow):
         if self.addr_type == None:
             await ErrorPage("Not a valid {} address.".format(chain_name)).show()
             return
+        #TODO: Compare used network to the address network
+        #if chains.current_chain().net != self.network_type:
+        #    await ErrorPage("Address not on the same network as this wallet.").show()
+        #    return
 
         if self.addr_type == AddressTypes.PRIMARY or self.addr_type == AddressTypes.INTEGRATED:
             self.lower_bound = 0

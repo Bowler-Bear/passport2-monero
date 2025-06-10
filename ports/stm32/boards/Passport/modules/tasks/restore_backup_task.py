@@ -93,12 +93,11 @@ async def restore_backup_task(on_done, decryption_password, backup_file_path):
         # Check that we can decode this right (might be different firmware)
         opmode, bits = stash.SecretStash.decode(raw)
 
-        # Cerify against xprv value (if we have it)
-        if 'xprv' in vals:
-            check_xprv = chain.serialize_private(node)
-            if check_xprv != vals['xprv']:
-                await on_done(Error.CORRUPT_BACKUP_FILE)
-                return
+        #Assume any that don't decode as 'words' didn't have the correct marker used by this software
+        #TODO: Create a NON_MONERO_BACKUP_FILE error and use that here instead of CORRUPT_BACKUP_FILE
+        if opmode != "words":
+            await on_done(Error.CORRUPT_BACKUP_FILE)
+            return
 
     except Exception as e:
         await on_done(Error.CORRUPT_BACKUP_FILE)

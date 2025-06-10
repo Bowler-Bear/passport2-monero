@@ -7,6 +7,7 @@
 import ujson
 import stash
 from data_codecs.qr_type import QRType
+from foundation import ur
 from xmr.monero import generate_monero_keys
 
 def view_wallet_export(sw_wallet=None, addr_type=None, acct_num=0, multisig=False, legacy=False, export_mode='qr', qr_type=None):
@@ -25,6 +26,10 @@ def view_wallet_export(sw_wallet=None, addr_type=None, acct_num=0, multisig=Fals
     rv = dict(PrivateViewKey=''.join('{:02x}'.format(x) for x in crypto.encodeint(private_view_key)), PublicAddress=public_address)
 
     msg = ujson.dumps(rv)
+
+    if export_mode == 'qr' and qr_type == QRType.UR2:
+        return (ur.new_bytes(msg), accts)
+
     return (msg, accts)
 
 

@@ -326,7 +326,9 @@ freeze('$(MPY_DIR)/ports/stm32/boards/Passport/modules',
 # Wallets
 freeze('$(MPY_DIR)/ports/stm32/boards/Passport/modules',
        ('wallets/__init__.py',
+        'wallets/anonero.py',
         'wallets/constants.py',
+        'wallets/generic_json_wallet.py',
         'wallets/monero_cli.py',
         'wallets/sw_wallets.py',
         'wallets/utils.py'))

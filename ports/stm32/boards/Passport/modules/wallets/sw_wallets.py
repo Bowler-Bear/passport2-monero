@@ -3,12 +3,14 @@
 #
 # sw_wallets.py - Software wallet config data for all supported wallets
 #
-#TODO: Add Cake Wallet, Feather Wallet, Guarda Wallet, Anonero
+#TODO: Add Cake Wallet, Feather Wallet, Guarda Wallet
 
 from .monero_cli import MoneroCLI
+from .anonero import Anonero
 
 # Array of all supported software wallets and their attributes.
 # Used to build wallet menus and drive their behavior.
 supported_software_wallets = [
-    MoneroCLI
+    MoneroCLI,
+    Anonero
 ]

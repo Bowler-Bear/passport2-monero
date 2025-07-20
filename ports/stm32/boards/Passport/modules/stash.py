@@ -22,8 +22,7 @@ import uctypes
 import gc
 from pincodes import SE_SECRET_LEN
 
-#Use a different marker for monero firmware to distinguish from data stored by official firmware.
-marker_value = 0x90
+marker_value = 0x82
 
 def blank_object(item):
     # Use/abuse uctypes to blank objects until python. Will likely
@@ -74,8 +73,6 @@ class SecretStash:
             return 'words', seed_bits
         elif retrieved_marker == 0x01:
             return 'bitcoin_xprv', None
-        elif retrieved_marker & 0x80:
-            return 'bitcoin_words', None
         else:
             return 'unknown', None
 

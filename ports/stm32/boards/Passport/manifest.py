@@ -25,7 +25,6 @@ freeze('$(MPY_DIR)/ports/stm32/boards/Passport/modules',
         'keys.py',
         'main.py',
         'menus.py',
-        'monero_mnemonic_languages.py',
         'multisig_wallet.py',
         'opcodes.py',
         'pincodes.py',
@@ -344,7 +343,8 @@ freeze('$(MPY_DIR)/ports/stm32/boards/Passport/modules',
 
 # Xmr
 freeze('$(MPY_DIR)/ports/stm32/boards/Passport/modules',
-       ('xmr/addresses.py',
+       ('monero_mnemonic_languages.py',
+        'xmr/addresses.py',
         'xmr/crypto/__init__.py',
         'xmr/monero.py',
         'xmr/networks.py'))
